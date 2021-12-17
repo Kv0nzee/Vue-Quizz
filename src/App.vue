@@ -1,26 +1,125 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+<div class="ctr">
+    <Questions
+    v-if="questionsAnswered < questions.length"
+    :questions="questions"
+    :questionsAnswered="questionsAnswered"
+    @question-answered="questionAnswered"
+    ></Questions>
+    <Results
+    v-else 
+    :totalCorrect="totalCorrect"
+    ></Results>
+    <div class="btn">
+      <button
+      type="button"
+      class="reset-btn"
+      @click.prevent="reset"
+    >
+    </button>
+    </div>
+</div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
 
+import Results from './components/Results'
+import Questions from './components/Questions'
+import getQuizz from './composable/getQuizz'
+import{ref} from "vue"
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    Results,
+    Questions,
+  },
+  setup(){
+    let questionsAnswered = ref(0);
+    let  totalCorrect = ref(0);
+    let questionAnswered = (is_correct) => {
+      if(is_correct){
+        totalCorrect.value++
+      }
+       questionsAnswered.value++;
+    }
+    let reset = () =>{
+        questionsAnswered.value = 0;
+        totalCorrect.value = 0;
+    }
+    let {questions,fetchData,error} = getQuizz();
+      fetchData();
+    return {questionsAnswered,totalCorrect,questions,error,reset,questionAnswered}
   }
 }
 </script>
 
 <style>
+body{
+  background-color: rgb(122, 156, 230);
+  margin:0;
+}
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+  margin:0;
+  background:#8741A6;
+  padding:60px 30px;
 }
+.ctr {
+    margin: 0 auto;
+    max-width: 600px;
+    width: 100%;
+    box-sizing: border-box;
+    position: relative;
+    background:#eeeeee;
+    border-radius:10px;
+    padding:15px;
+  }
+.btn{
+  position: relative;
+  display: inline-flex;
+  width: 180px;
+  height: 55px;
+  /* margin-top: -10px; */
+  perspective: 1000px;
+}
+.btn button{
+  border:none;
+  font-size: 19px;
+  letter-spacing: 1px;
+  transform-style: preserve-3d;
+  transform: translateZ(-25px);
+  transition: transform .25s;
+  font-family: 'Montserrat', sans-serif;
+  
+}
+.btn button:before,
+.btn button:after{
+  position: absolute;
+  content: "Reset";
+  height: 55px;
+  width: 180px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 5px solid black;
+  box-sizing: border-box;
+  border-radius: 5px;
+}
+.btn button:before{
+  color: #fff;
+  background: #000;
+  transform: rotateY(0deg) translateZ(25px);
+}
+.btn button:after{
+  color: #000;
+  transform: rotateX(90deg) translateZ(25px);
+}
+.btn button:hover{
+  transform: translateZ(-25px) rotateX(-90deg);
+}
+
 </style>

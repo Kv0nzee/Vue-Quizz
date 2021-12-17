@@ -1,0 +1,129 @@
+{
+    "questions": [
+        {
+            "q": "In which part of your body would you find the cruciate ligament?", 
+            "answers": [
+                {
+                    "text": "Head",
+                    "is_correct": false
+                },
+                {
+                    "text": "Knee",
+                    "is_correct": true 
+                },
+                {
+                    "text": "Neck",
+                    "is_correct": false 
+                },
+                {
+                    "text": "Leg",
+                    "is_correct": false 
+                }
+            ] 
+        },
+        {
+            "q": "What is the capital of New Zealand?", 
+            "answers": [
+                {
+                    "text": "Wellington",
+                    "is_correct": true
+                },
+                {
+                    "text": "Tokyo",
+                    "is_correct": false 
+                },
+                {
+                    "text": "Yangon",
+                    "is_correct": false 
+                },
+                {
+                    "text": "Dubai",
+                    "is_correct": false 
+                }
+            ] 
+        },
+        {
+            "q": "What sport did David Beckham play?", 
+            "answers": [
+                {
+                    "text": "Basketball",
+                    "is_correct": false
+                },
+                {
+                    "text": "Tennis",
+                    "is_correct": false 
+                },
+                {
+                    "text": "Karate",
+                    "is_correct": false 
+                },
+                {
+                    "text": "Football",
+                    "is_correct": true 
+                }
+            ] 
+        },
+        {
+            "q": "What are the five colours of the Olympic rings?", 
+            "answers": [
+                {
+                    "text": "Blue, Black, Yellow, Green and Red.",
+                    "is_correct": false
+                },
+                {
+                    "text": "Blue, Yellow, Black, Green and Red.",
+                    "is_correct": true 
+                },
+                {
+                    "text": "Blue, Red, Black, Green and Yellow.",
+                    "is_correct": false 
+                },
+                {
+                    "text": "Blue, Red, Black, White and Red.",
+                    "is_correct": false 
+                }
+            ] 
+        },
+        {
+            "q": "How many notes are there in a musical scale?", 
+            "answers": [
+                {
+                    "text": "5",
+                    "is_correct": false
+                },
+                {
+                    "text": "6",
+                    "is_correct": false 
+                },
+                {
+                    "text": "7",
+                    "is_correct": true 
+                },
+                {
+                    "text": "9",
+                    "is_correct": true 
+                }
+            ] 
+        }   
+    ],
+    "results": [
+        {
+            "min": "0",
+            "max": "2",
+            "title": "Try again!",
+            "desc": "Do a little more studying and you may succeed!"
+        },
+        {
+            "min": 3,
+            "max": 4,
+            "title": "Nice, you're good",
+            "desc": "Keep going to be a genius!"
+        },
+        {
+            "min": 5,
+            "max": 5,
+            "title": "Wow, you're a genius!",
+            "desc": "Studying has definitely paid off for you!"
+        }
+    ]
+}
