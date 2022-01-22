@@ -1,18 +1,18 @@
-import { ref } from 'vue'
+import { ref } from 'vue';
+import  {db} from "../firebase/config";
 let getQuizz = () =>{
     let questions= ref([]);
     let error = ref("");
     let fetchData = async() => {
         try {
-          let response = await fetch("http://localhost:3000/questions"); 
-          if(response.status == 404){
-            throw new Error("404 page");
-          }
-          let data = await response.json();
-          questions.value = data;
+          await db.collection("questions").onSnapshot((snap) => {
+            questions.value = snap.docs.map((doc) => {
+               return {id:doc.id,...doc.data()}
+           })
+         })
           }
          catch (err) {
-           error.value =  err
+           error.value =  err.message;
          } 
       };
       return {questions,fetchData,error}

@@ -9,20 +9,19 @@
 import {ref, computed } from '@vue/reactivity';
 import getResult from "../composable/getResult"
 export default {
- props: ["totalCorrect"],
+ props: ["totalCorrect","questionsAnswered"],
  setup(props){
-     let {results,fetchData,error} = getResult();
-      fetchData();
+     let {results} = getResult();
       let index = ref(0);
       let resultIndex = computed(() => {
          results.value.forEach((e, i) => {
-            if (e.min <= props.totalCorrect && e.max >= props.totalCorrect) {
+            if (e.percent <= (props.totalCorrect/ props.questionsAnswered) * 100 ) {
             index.value = i;
             }
         });
         return index.value
       })
-    return {results,fetchData,error,index,resultIndex}
+    return {results,index,resultIndex}
  }
 }
 </script>
