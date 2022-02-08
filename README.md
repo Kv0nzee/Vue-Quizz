@@ -1,5 +1,7 @@
 # quizz
 
+![image](https://user-images.githubusercontent.com/62888962/152988523-7150e324-9f84-42c7-9436-4c047cb7270f.png)
+
 ## Project setup
 ```
 npm install
